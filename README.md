@@ -20,6 +20,13 @@ pip3 install scikit-learn
 3. Type help to get the list of supported functions.
 4. Play with it!
 
+# Examples of what you can achieve
+
+![similarity_distribution](https://github.com/luk-kaminski/vep/assets/100699120/abd93365-91d8-413a-b881-a34d95f17f58)
+
+![embeddings_clustering_visualisation](https://github.com/luk-kaminski/vep/assets/100699120/c4ae28b2-ce0d-4945-b370-b1983bbc611e)
+
+
 # Clues
 The files with Vector Embeddings tend to be huge. Significant portion of words are rare or even strange. 
 You can cut only the words from the top (the most popular ones) and work on a smaller file, faster.

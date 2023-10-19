@@ -24,8 +24,11 @@ pip3 install scikit-learn
 The files with Vector Embeddings tend to be huge. Significant portion of words are rare or even strange. 
 You can cut only the words from the top (the most popular ones) and work on a smaller file, faster.
 The command for that is:
+
 `python3 vector_file_cutter.py [file] [word_limit]`
+
 i.e.:
+
 `python3 vector_file_cutter.py glove.6B.300d.txt 30000`
 
 # Warning

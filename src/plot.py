@@ -20,11 +20,11 @@ class PlotDraw(object):
         X = self.named_vectors.to_matrix(words)
         X_std = StandardScaler().fit_transform(X)
         pca = PCA(n_components=3)
-        pca.fit(X_std)
+        X_pca = pca.fit_transform(X_std)
 
-        ax.scatter(X_std[:, 0], X_std[:, 1], X_std[:, 2])
+        ax.scatter(X_pca[:, 0], X_pca[:, 1], X_pca[:, 2])
         for (ind, word) in enumerate(words):
-            ax.text(X_std[ind, 0], X_std[ind, 1], X_std[ind, 2], word, color=word_groups.get_group_color(word))
+            ax.text(X_pca[ind, 0], X_pca[ind, 1], X_pca[ind, 2], word, color=word_groups.get_group_color(word))
         plt.show()
 
     def plot_words_projections_with_dimension_selection(self, words, x_axis, y_axis, z_axis):

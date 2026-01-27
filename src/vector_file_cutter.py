@@ -5,16 +5,16 @@ import sys
 
 
 def top_lines_to_new_file(original_fname, new_fname, limit):
-    original_file = io.open(original_fname, 'r', encoding='utf-8', newline='\n')
-    new_file = io.open(new_fname, 'w', encoding='utf-8', newline='\n')
-    if original_fname.endswith('.vec'):
-        n, d = map(int, original_file.readline().split())
-        # do nothing with this line
-    for line in original_file:
-        new_file.write(line)
-        limit -= 1
-        if limit <= 0:
-            break
+    with io.open(original_fname, 'r', encoding='utf-8', newline='\n') as original_file:
+        with io.open(new_fname, 'w', encoding='utf-8', newline='\n') as new_file:
+            if original_fname.endswith('.vec'):
+                n, d = map(int, original_file.readline().split())
+                # do nothing with this line
+            for line in original_file:
+                new_file.write(line)
+                limit -= 1
+                if limit <= 0:
+                    break
 
 
 if __name__ == "__main__":

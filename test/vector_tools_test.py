@@ -22,7 +22,8 @@ class TestVectorTools(unittest.TestCase):
         sut.add_vector('name', np.array([0, 3, 1]))
 
         npt.assert_array_equal(np.array([0, 3, 1]), sut.get_vector('name'))
-        self.assertIsNone(sut.get_vector('missing'))
+        with self.assertRaises(KeyError):
+            sut.get_vector('missing')
 
     def test_to_matrix(self):
         sut = vt.NamedVectors(3)

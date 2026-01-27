@@ -16,7 +16,9 @@ class NamedVectors(object):
         self.data[name] = vector_data
 
     def get_vector(self, name):
-        return self.data.get(name)
+        if name not in self.data:
+            raise KeyError(f"Word '{name}' not found in vocabulary")
+        return self.data[name]
 
     def items(self):
         return self.data.items()
@@ -24,10 +26,11 @@ class NamedVectors(object):
     def to_matrix(self, words):
         X = np.zeros((len(words), self.dimensions))
         for (ind, word) in enumerate(words):
-            vector = self.get_vector(word)
-            if vector is not None:
-                X[ind] = vector
-
+            try:
+                X[ind] = self.get_vector(word)
+            except KeyError:
+                # Keep zero vector for missing words
+                pass
         return X
 
     def find_synonyms(self, word_vector, threshold, word=None):

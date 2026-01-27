@@ -34,7 +34,6 @@ def help(command):
         print('exit -> exit the program')
 
 
-
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print('Please provide vector data file as the first argument')
@@ -45,14 +44,14 @@ if __name__ == "__main__":
         data = vt.NamedVectorsLoader().from_file(file_name)
         stop_time = time.time()
         print('Loading vectors took ', (stop_time - start_time), ' seconds')
-    except:
-        print('Something is wrong with your vector data file...')
+    except Exception as e:
+        print(f'Error loading vector file: {e}')
         traceback.print_exc()
         exit()
 
     command = None
 
-    while command == None or command[0] != 'exit':
+    while command is None or command[0] != 'exit':
         print('='*15)
         command = input('Enter command : ').split(' ')
         print('='*15)
@@ -67,8 +66,8 @@ if __name__ == "__main__":
                 result = data.find_synonyms(vec, float(limit))
                 for (k, v) in result:
                     print("{0} : {1:.2f}".format(k, v))
-            except:
-                print('Command mis-used, valid usage:')
+            except Exception as e:
+                print(f'Error: {e}')
                 help(command[0])
         elif command[0] == 'comp':
             try:
@@ -87,8 +86,8 @@ if __name__ == "__main__":
                         vec2 = data.get_vector(exp2[0])
                 similarity = vt.similarity(vec1, vec2)
                 print("Similarity : {0:.2f}".format(similarity))
-            except:
-                print('Command mis-used, valid usage:')
+            except Exception as e:
+                print(f'Error: {e}')
                 help(command[0])
         elif command[0] == 'points':
             try:
@@ -101,8 +100,8 @@ if __name__ == "__main__":
                 word_groups.add_group('nationalities', ['Nigerian', 'Japanese', 'German', 'Polish', 'Czech', 'Ukrainian'], 'green')
 
                 plotter.plot_words_projections_with_professional_dimensional_reduction(word_groups)
-            except:
-                print('Command mis-used, valid usage:')
+            except Exception as e:
+                print(f'Error: {e}')
                 help(command[0])
         elif command[0] == 'plot':
             try:
@@ -112,8 +111,8 @@ if __name__ == "__main__":
                     plotter.plot_similarity_distribution(word.split(','))
                 else:
                     plotter.plot_similarity_distribution(word)
-            except:
-                print('Command mis-used, valid usage:')
+            except Exception as e:
+                print(f'Error: {e}')
                 help(command[0])
         elif command[0] == 'help':
             print('Valid commands:')

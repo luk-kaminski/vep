@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-import vector_tools as vt
-from plot import PlotDraw
-from plot import WordGroups
+from . import vector_tools as vt
+from .plot import PlotDraw, WordGroups
 
 import sys
 import time
@@ -34,10 +33,10 @@ def help(command):
         print('exit -> exit the program')
 
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) < 2:
         print('Please provide vector data file as the first argument')
-        exit()
+        sys.exit(1)
     file_name = sys.argv[1]
     try:
         start_time = time.time()
@@ -47,7 +46,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f'Error loading vector file: {e}')
         traceback.print_exc()
-        exit()
+        sys.exit(1)
 
     command = None
 
@@ -117,6 +116,10 @@ if __name__ == "__main__":
         elif command[0] == 'help':
             print('Valid commands:')
             help(command[0])
+
+
+if __name__ == "__main__":
+    main()
 
 
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import vector_tools as vt
+from . import vector_tools as vt
 
 import numpy as np
 import matplotlib.pyplot as plt

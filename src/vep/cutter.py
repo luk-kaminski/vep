@@ -17,10 +17,18 @@ def top_lines_to_new_file(original_fname, new_fname, limit):
                     break
 
 
-if __name__ == "__main__":
+def main():
+    if len(sys.argv) < 3:
+        print("Usage: vep-cut [file] [word_limit]")
+        sys.exit(1)
+
     file_name = sys.argv[1]
     extension = file_name[file_name.rindex('.'):]
     limit = sys.argv[2]
     new_file_name_ending = '-cut-to-' + limit + extension
     new_file_name = file_name.replace(extension, new_file_name_ending)
     top_lines_to_new_file(file_name, new_file_name, int(limit))
+
+
+if __name__ == "__main__":
+    main()

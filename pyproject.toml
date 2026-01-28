@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vep"
+version = "0.2.0"
+description = "Vector Embedding Playground - Interactive tool for exploring word embeddings"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [
+    {name = "Lukasz Kaminski"}
+]
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "scikit-learn",
+]
+
+[project.scripts]
+vep = "vep.cli:main"
+vep-cut = "vep.cutter:main"
+
+[project.urls]
+Homepage = "https://github.com/luk-kaminski/vep"

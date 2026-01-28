@@ -4,3 +4,14 @@ __pycache__/
 .idea/
 /nbproject/
 /.ropeproject/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+ENV/

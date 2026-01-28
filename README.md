@@ -1,12 +1,15 @@
 # About
 Vector Embedding Playground is a tool that helps you play with Vector Embeddings (provided in a file).
 
-# Prerequisites
-Needed Python libraries: numpy, matplotlib, scikit-learn.
+# Installation
+Install the package and all its dependencies:
+```bash
+pip install .
 ```
-pip3 install numpy
-pip3 install matplotlib
-pip3 install scikit-learn
+
+Or in editable mode for development:
+```bash
+pip install -e .
 ```
 
 # Supported file formats
@@ -16,9 +19,14 @@ pip3 install scikit-learn
 
 # Usage
 1. Get a file with vector embeddings.
-2. Start the program: `python3 vep.py [vector_embeddings_file]`
+2. Start the program: `vep [vector_embeddings_file]`
 3. Type help to get the list of supported functions.
 4. Play with it!
+
+You can also run it as a Python module:
+```bash
+python -m vep [vector_embeddings_file]
+```
 
 # Examples of what you can achieve
 
@@ -27,16 +35,19 @@ pip3 install scikit-learn
 ![embeddings_clustering_visualisation](https://github.com/luk-kaminski/vep/assets/100699120/c4ae28b2-ce0d-4945-b370-b1983bbc611e)
 
 
-# Clues
-The files with Vector Embeddings tend to be huge. Significant portion of words are rare or even strange. 
+# Cutting Large Files
+The files with Vector Embeddings tend to be huge. Significant portion of words are rare or even strange.
 You can cut only the words from the top (the most popular ones) and work on a smaller file, faster.
 The command for that is:
 
-`python3 vector_file_cutter.py [file] [word_limit]`
+```bash
+vep-cut [file] [word_limit]
+```
 
-i.e.:
-
-`python3 vector_file_cutter.py glove.6B.300d.txt 30000`
+Example:
+```bash
+vep-cut glove.6B.300d.txt 30000
+```
 
 # Warning
 The project is still work in progress and has some problems here and there...

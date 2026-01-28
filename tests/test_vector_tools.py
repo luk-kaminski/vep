@@ -3,7 +3,7 @@
 import unittest
 import numpy as np
 import numpy.testing as npt
-import src.vector_tools as vt
+import vep.vector_tools as vt
 
 
 class TestVectorTools(unittest.TestCase):
